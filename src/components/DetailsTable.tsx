@@ -40,8 +40,8 @@ export default function DetailsTable(props: { item: SimulationOutputItem }) {
             <td>{formatEuro(item.salaire.net)}</td>
           </tr>
           <tr>
-            <td>Net fiscal</td>
-            <td>{formatEuro(item.salaire.netFiscal)}</td>
+            <td>Net Imposable</td>
+            <td>{formatEuro(item.salaire.netImposable)}</td>
           </tr>
           <tr>
             <td>Cotisations patronales</td>
@@ -209,8 +209,8 @@ export default function DetailsTable(props: { item: SimulationOutputItem }) {
             <td rowSpan={item.dividendes.pfuImpotsRevenu !== 0 ? 4 : 6}>
               {formatEuro(item.impots.imposable)}
             </td>
-            <td>Salaire net fiscal</td>
-            <td>{formatEuro(item.salaire.netFiscal)}</td>
+            <td>Salaire net imposable</td>
+            <td>{formatEuro(item.salaire.netImposable)}</td>
           </tr>
           <tr>
             <td>Déduction frais professionnels</td>

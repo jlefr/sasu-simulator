@@ -11,7 +11,7 @@ export interface Salaire {
   superBrut: number
   brut: number
   net: number
-  netFiscal: number
+  netImposable: number
   cotisation: Cotisation
 }
 

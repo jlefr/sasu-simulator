@@ -73,10 +73,10 @@ function calculateImpots(
 ): Impots {
   const avant = salaire.net + dividendes.net + settings.autresRevenusImposables;
 
-  const deductionFraisPro = calculateDeductionFraisPro(salaire.netFiscal);
+  const deductionFraisPro = calculateDeductionFraisPro(salaire.netImposable);
 
   const imposable =
-    salaire.netFiscal - deductionFraisPro + dividendes.imposable + settings.autresRevenusImposables;
+    salaire.netImposable - deductionFraisPro + dividendes.imposable + settings.autresRevenusImposables;
 
   const [tranche1, tranche2, tranche3, tranche4] = configIR.tranches;
   const [taux1, taux2, taux3, taux4, taux5] = configIR.taux;
@@ -266,7 +266,7 @@ function calculateSalaire(brut: number, engine: Engine): Salaire {
         partPatronale: 0,
         partSalariale: 0,
       },
-      netFiscal: 0,
+      netImposable: 0,
     };
   }
 
@@ -301,7 +301,7 @@ function calculateSalaire(brut: number, engine: Engine): Salaire {
         )
       ),
     },
-    netFiscal: round2dec(
+    netImposable: round2dec(
       evaluateEurPerMonth(
         engine,
         "contrat salarié . rémunération . net imposable"
