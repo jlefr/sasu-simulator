@@ -101,13 +101,13 @@ interface SettingsControlsProps {
 
 export default function SettingsControls({ onChange, displayMonthly, setDisplayMonthly }: SettingsControlsProps) {
   const [values, setValues] = useState({
-    tjm: 400,
-    joursParMois: 18,
+    tjm: 540,
+    joursParMois: 18.333,
     autresRevenusAnnuels: 0,
     autresRevenusMensuels: 0,
-    fraisAnnuels: 2000,
-    fraisMensuels: 500,
-    miseEnReserve: 1000,
+    fraisAnnuels: 1200,
+    fraisMensuels: 0,
+    miseEnReserve: 0,
     dividendesReserve: 0,
     autresRevenusImposables: 0,
   });

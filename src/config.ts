@@ -1,12 +1,12 @@
 
 export const configIS = {
-  tranche1: 38120,
+  tranche1: 42500,
   taux1: 0.15,
-  taux2: 0.265
+  taux2: 0.25
 }
 
 export const configIR = {
-  tranches: [10084, 25710, 73516, 158122],
+  tranches: [10777, 27478, 78570, 168994],
   taux: [0, 0.11, 0.3, 0.41, 0.45],
   deductionFraisProMin: 442,
   deductionFraisProMax: 12652  

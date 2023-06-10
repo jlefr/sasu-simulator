@@ -11,7 +11,6 @@ import {
   SimulationOutput,
   SalairesDict,
 } from "./models";
-import { maxHeaderSize } from "node:http";
 
 function round2dec(num: number): number {
   return Math.round(num);

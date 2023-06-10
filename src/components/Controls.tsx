@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/Controls.module.css";
 import SettingsControls from "./SettingsControls";
 import SalaryControls from "./SalaryControls";
-import Switch, { SwitchPosition } from "./Switch";
 
 export function Controls({
   setSettings,
