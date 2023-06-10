@@ -8,7 +8,7 @@ import Switch, { SwitchPosition } from "./Switch";
 
 const schema = Yup.object().shape({
   tjm: Yup.number().min(0).required(),
-  joursParMois: Yup.number().min(0).required(),
+  joursParAn: Yup.number().min(0).required(),
   autresRevenusAnnuels: Yup.number().min(0).required(),
   autresRevenusMensuels: Yup.number().min(0).required(),
   fraisAnnuels: Yup.number().min(0).required(),
@@ -65,7 +65,7 @@ function ValueInput({
 
 function computeCa(values: TypeOf<typeof schema>): number {
   return (
-    values.tjm * values.joursParMois * 12 +
+    values.tjm * values.joursParAn +
     values.autresRevenusAnnuels +
     values.autresRevenusMensuels * 12
   );
@@ -102,7 +102,7 @@ interface SettingsControlsProps {
 export default function SettingsControls({ onChange, displayMonthly, setDisplayMonthly }: SettingsControlsProps) {
   const [values, setValues] = useState({
     tjm: 540,
-    joursParMois: 18.333,
+    joursParAn: 220,
     autresRevenusAnnuels: 0,
     autresRevenusMensuels: 0,
     fraisAnnuels: 1200,
@@ -162,7 +162,7 @@ export default function SettingsControls({ onChange, displayMonthly, setDisplayM
     <div className={styles.container}>
       <div className={styles.group}>
         {inputShorthand("tjm", "Taux journalier", "€/jour")}
-        {inputShorthand("joursParMois", "Nombre de jours", "jour/mois")}
+        {inputShorthand("joursParAn", "Nombre de jours", "jour/an")}
       </div>
 
       <div className={styles.group}>

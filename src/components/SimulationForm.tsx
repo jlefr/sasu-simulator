@@ -48,7 +48,7 @@ function ValueOutput({ title, value, unit }: ValueOutputProps) {
 
 const FormSchema = Yup.object().shape({
   tjm: Yup.number().min(0).required(),
-  joursParMois: Yup.number().min(0).required(),
+  joursParAn: Yup.number().min(0).required(),
   autresRevenusAnnuels: Yup.number().min(0).required(),
   autresRevenusMensuels: Yup.number().min(0).required(),
   fraisAnnuels: Yup.number().min(0).required(),
@@ -60,7 +60,7 @@ const FormSchema = Yup.object().shape({
 
 
 function computeCa(values: TypeOf<typeof FormSchema>): number {
-  return values.tjm * values.joursParMois * 12 + values.autresRevenusAnnuels + values.autresRevenusMensuels * 12
+  return values.tjm * values.joursParAn + values.autresRevenusAnnuels + values.autresRevenusMensuels * 12
 }
 
 function computeFrais(values: TypeOf<typeof FormSchema>): number {
@@ -85,10 +85,10 @@ function convertValuesToSimulationInput(values: TypeOf<typeof FormSchema>): Simu
 
 function preComputeAndFormatCa(values: TypeOf<typeof FormSchema>, errors: FormikErrors<TypeOf<typeof FormSchema>>): string {
 
-  if (errors.tjm || errors.joursParMois || errors.autresRevenusAnnuels || errors.autresRevenusMensuels) {
+  if (errors.tjm || errors.joursParAn || errors.autresRevenusAnnuels || errors.autresRevenusMensuels) {
     return ""
   }
-  const amount = Number(values.tjm) * Number(values.joursParMois) * 12 + Number(values.autresRevenusAnnuels) + Number(values.autresRevenusMensuels * 12)
+  const amount = Number(values.tjm) * Number(values.joursParAn) + Number(values.autresRevenusAnnuels) + Number(values.autresRevenusMensuels * 12)
   return amount.toLocaleString('fr-FR', {
     style: 'currency',
     currency: 'EUR',
@@ -123,7 +123,7 @@ export default function SimulationForm({ onSubmit }: SimulationFormProps) {
     <Formik
       initialValues={FormSchema.cast({
         tjm: 540,
-        joursParMois: 18.333,
+        joursParAn: 220,
         autresRevenusAnnuels: 0,
         autresRevenusMensuels: 0,
         fraisAnnuels: 1200,
@@ -165,8 +165,8 @@ export default function SimulationForm({ onSubmit }: SimulationFormProps) {
               inputProps={{ onChange: handleChange, onBlur: handleBlur, value: values.tjm, }} />
           </div>
           <div className={classNames(styles.item, styles.itemInput, styles.p2)} style={{ gridArea: "p-2" }}>
-            <ValueInput name="joursParMois" title="Nombre de jours" unit="jours/mois" invalid={errors.joursParMois}
-              inputProps={{ onChange: handleChange, onBlur: handleBlur, value: values.joursParMois }} />
+            <ValueInput name="joursParAn" title="Nombre de jours" unit="jours/an" invalid={errors.joursParAn}
+              inputProps={{ onChange: handleChange, onBlur: handleBlur, value: values.joursParAn }} />
           </div>
           <div className={classNames(styles.item, styles.itemInput, styles.p3)} style={{ gridArea: "p-3" }}>
             <ValueInput name="autresRevenusAnnuels" title="Autres produits annuels" unit="€/an" invalid={errors.autresRevenusAnnuels}
