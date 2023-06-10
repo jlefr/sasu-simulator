@@ -1,7 +1,4 @@
 ## TODO
 
-- faire apparaître la deduction frais pro dans le tableau
-- Design / Style d'ensemble
-- Responsive
-- 2021
-- Text / SSO
+- 1 - Regénerer salaires.json pour 2023
+- 2 - Générer salaires.json dynamiquement ?
